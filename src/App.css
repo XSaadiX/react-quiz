@@ -1,5 +1,22 @@
+/* Style for the StartScreen description paragraph */
+* {
+  box-sizing: border-box;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+.start-desc {
+  font-size: 1.1rem;
+  color: #fcfcfc;
+  margin-bottom: 2rem;
+
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  display: inline-block;
+}
 .App {
   text-align: center;
+  display: flex;
 }
 
 .App-logo {
