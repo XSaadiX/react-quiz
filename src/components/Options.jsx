@@ -1,29 +1,29 @@
-import { type } from "@testing-library/user-event/dist/type";
-import React from "react";
+import { useQuiz } from "../contexts/QuizContext";
 
-export default function Options({ dispatch, answer, question }) {
+function Options({ question }) {
+  const { dispatch, answer } = useQuiz();
+
   const hasAnswered = answer !== null;
+
   return (
     <div className='options'>
-      {question.options.map((option, i) => (
+      {question.options.map((option, index) => (
         <button
-          className={`btn btn-option ${i === answer ? "selected" : ""} ${
+          className={`btn btn-option ${index === answer ? "answer" : ""} ${
             hasAnswered
-              ? i === question.correctOption
+              ? index === question.correctOption
                 ? "correct"
                 : "wrong"
               : ""
           }`}
-          key={i}
+          key={option}
           disabled={hasAnswered}
-          onClick={() => {
-            dispatch({ type: "newAnswer", payload: i });
-          }}>
-          <h4>
-            {i + 1}. {option}
-          </h4>
+          onClick={() => dispatch({ type: "newAnswer", payload: index })}>
+          {option}
         </button>
       ))}
     </div>
   );
 }
+
+export default Options;
